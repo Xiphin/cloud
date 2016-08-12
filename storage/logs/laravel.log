@@ -1,0 +1,15 @@
+[2016-08-12 01:09:02] local.ERROR: Symfony\Component\Console\Exception\CommandNotFoundException: Command "migreta" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:install
+    migrate:rollback
+    migrate:reset
+    migrate:refresh
+    migrate:status in E:\project\laravelcloud\vendor\symfony\console\Application.php:535
+Stack trace:
+#0 E:\project\laravelcloud\vendor\symfony\console\Application.php(183): Symfony\Component\Console\Application->find('migreta')
+#1 E:\project\laravelcloud\vendor\symfony\console\Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 E:\project\laravelcloud\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(111): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 E:\project\laravelcloud\artisan(35): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
