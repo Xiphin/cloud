@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -36,4 +37,19 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    /**
+     * 用户登录方法
+     * @author  tangtanglove <dai_hang_love@126.com>
+     */
+    public function centerLogin(Request $request)
+    {
+        if($request->isMethod('post')){
+            $username = $request->input('username');
+            $password = $request->input('password');
+        } else {
+            return view('center/login');
+        }
+    }
+
 }
