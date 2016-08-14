@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -67,5 +67,24 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * 用户注册方法
+     * @author  tangtanglove <dai_hang_love@126.com>
+     */
+    public function centerRegister(Request $request)
+    {
+        if($request->isMethod('post')){
+            $username = $request->input('username');
+            $password = $request->input('password');
+            $nickname = $request->input('username');
+            $email    = $request->input('email');
+            $uuid     = Helper::createUuid();
+            $salt     = Helper::createSalt();
+            $regdate  = time();
+        } else {
+            return view('center/register');
+        }
     }
 }
