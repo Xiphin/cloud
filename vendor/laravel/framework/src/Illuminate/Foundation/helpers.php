@@ -385,17 +385,26 @@ if (! function_exists('elixir')) {
      */
     function elixir($file, $buildDirectory = 'build')
     {
-        static $manifest;
+        static $manifest = [];
         static $manifestPath;
 
-        if (is_null($manifest) || $manifestPath !== $buildDirectory) {
-            $manifest = json_decode(file_get_contents(public_path($buildDirectory.'/rev-manifest.json')), true);
+        if (empty($manifest) || $manifestPath !== $buildDirectory) {
+            $path = public_path($buildDirectory.'/rev-manifest.json');
 
-            $manifestPath = $buildDirectory;
+            if (file_exists($path)) {
+                $manifest = json_decode(file_get_contents($path), true);
+                $manifestPath = $buildDirectory;
+            }
         }
 
         if (isset($manifest[$file])) {
             return '/'.trim($buildDirectory.'/'.$manifest[$file], '/');
+        }
+
+        $unversioned = public_path($file);
+
+        if (file_exists($unversioned)) {
+            return '/'.trim($file, '/');
         }
 
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
@@ -463,9 +472,9 @@ if (! function_exists('event')) {
      * @param  bool  $halt
      * @return array|null
      */
-    function event($event, $payload = [], $halt = false)
+    function event(...$args)
     {
-        return app('events')->fire($event, $payload, $halt);
+        return app('events')->fire(...$args);
     }
 }
 
@@ -618,6 +627,20 @@ if (! function_exists('request')) {
         }
 
         return app('request')->input($key, $default);
+    }
+}
+
+if (! function_exists('resolve')) {
+    /**
+     * Resolve a service from the container.
+     *
+     * @param  string  $name
+     * @param  array  $parameters
+     * @return mixed
+     */
+    function resolve($name, $parameters = [])
+    {
+        return app($name, $parameters);
     }
 }
 

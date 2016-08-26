@@ -1796,7 +1796,7 @@ class Builder
      *
      * @param  int  $count
      * @param  callable  $callback
-     * @return  bool
+     * @return bool
      */
     public function chunk($count, callable $callback)
     {
@@ -1824,11 +1824,14 @@ class Builder
      * @param  int  $count
      * @param  callable  $callback
      * @param  string  $column
+     * @param  string  $alias
      * @return bool
      */
-    public function chunkById($count, callable $callback, $column = 'id')
+    public function chunkById($count, callable $callback, $column = 'id', $alias = null)
     {
         $lastId = null;
+
+        $alias = $alias ?: $column;
 
         $results = $this->forPageAfterId($count, 0, $column)->get();
 
@@ -1837,7 +1840,7 @@ class Builder
                 return false;
             }
 
-            $lastId = $results->last()->{$column};
+            $lastId = $results->last()->{$alias};
 
             $results = $this->forPageAfterId($count, $lastId, $column)->get();
         }
@@ -1951,7 +1954,7 @@ class Builder
      * Retrieve the minimum value of a given column.
      *
      * @param  string  $column
-     * @return float|int
+     * @return mixed
      */
     public function min($column)
     {
@@ -1962,7 +1965,7 @@ class Builder
      * Retrieve the maximum value of a given column.
      *
      * @param  string  $column
-     * @return float|int
+     * @return mixed
      */
     public function max($column)
     {
@@ -1973,20 +1976,18 @@ class Builder
      * Retrieve the sum of the values of a given column.
      *
      * @param  string  $column
-     * @return float|int
+     * @return mixed
      */
     public function sum($column)
     {
-        $result = $this->aggregate(__FUNCTION__, [$column]);
-
-        return $result ?: 0;
+        return $this->aggregate(__FUNCTION__, [$column]);
     }
 
     /**
      * Retrieve the average of the values of a given column.
      *
      * @param  string  $column
-     * @return float|int
+     * @return mixed
      */
     public function avg($column)
     {
@@ -1997,7 +1998,7 @@ class Builder
      * Alias for the "avg" method.
      *
      * @param  string  $column
-     * @return float|int
+     * @return mixed
      */
     public function average($column)
     {
@@ -2009,7 +2010,7 @@ class Builder
      *
      * @param  string  $function
      * @param  array   $columns
-     * @return float|int
+     * @return mixed
      */
     public function aggregate($function, $columns = ['*'])
     {
@@ -2036,10 +2037,34 @@ class Builder
         $this->bindings['select'] = $previousSelectBindings;
 
         if (! $results->isEmpty()) {
-            $result = array_change_key_case((array) $results[0]);
-
-            return $result['aggregate'];
+            return array_change_key_case((array) $results[0])['aggregate'];
         }
+    }
+
+    /**
+     * Execute a numeric aggregate function on the database.
+     *
+     * @param  string  $function
+     * @param  array   $columns
+     * @return float|int
+     */
+    public function numericAggregate($function, $columns = ['*'])
+    {
+        $result = $this->aggregate($function, $columns);
+
+        if (! $result) {
+            return 0;
+        }
+
+        if (is_int($result) || is_float($result)) {
+            return $result;
+        }
+
+        if (strpos((string) $result, '.') === false) {
+            return (int) $result;
+        }
+
+        return (float) $result;
     }
 
     /**
