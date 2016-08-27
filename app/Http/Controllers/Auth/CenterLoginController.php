@@ -23,33 +23,6 @@ class CenterLoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * 验证要登录的字段 name,email
-     *
-     * @return string
-     */
-    protected function username()
-    {
-        return 'name';
-    }
-
-    /**
-     * 需要认证的guard
-     *
-     * @return string
-     */
-    protected function guard()
-    {
-        return Auth::guard('center');
-    }
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -57,6 +30,16 @@ class CenterLoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    /**
+     * 用户退出方法
+     * @author  tangtanglove <dai_hang_love@126.com>
+     */
+    public function logout()
+    {
+        Auth::guard('center')->logout();
+        return redirect()->intended('center/login');
     }
 
     /**
@@ -68,6 +51,12 @@ class CenterLoginController extends Controller
         if($request->isMethod('post')){
             $username = $request->input('username');
             $password = $request->input('password');
+            if (Auth::guard('center')->attempt(['name' => $username, 'password' => $password])) {
+                // Authentication passed...
+                return redirect()->intended('center');
+            } else {
+                return '登录失败';
+            }
         } else {
             return view('auth.centerlogin');
         }

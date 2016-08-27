@@ -19,6 +19,10 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
+        } else {
+            if($guard=='center') {
+                return redirect('/center/login');
+            }
         }
 
         return $next($request);
