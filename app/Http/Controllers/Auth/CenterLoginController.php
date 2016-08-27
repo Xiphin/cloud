@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class CenterLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -30,6 +30,26 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
 
     /**
+     * 验证要登录的字段 name,email
+     *
+     * @return string
+     */
+    protected function username()
+    {
+        return 'name';
+    }
+
+    /**
+     * 需要认证的guard
+     *
+     * @return string
+     */
+    protected function guard()
+    {
+        return Auth::guard('center');
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -37,6 +57,20 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    /**
+     * 用户登录方法
+     * @author  tangtanglove <dai_hang_love@126.com>
+     */
+    public function login(Request $request)
+    {
+        if($request->isMethod('post')){
+            $username = $request->input('username');
+            $password = $request->input('password');
+        } else {
+            return view('auth.centerlogin');
+        }
     }
 
 }
