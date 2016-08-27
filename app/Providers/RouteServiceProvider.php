@@ -39,6 +39,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapApiRoutes();
 
+        $this->mapCenterRoutes();
         //
     }
 
@@ -76,4 +77,23 @@ class RouteServiceProvider extends ServiceProvider
             require base_path('routes/api.php');
         });
     }
+
+    /**
+     * Define the "center" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapCenterRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'auth:center'],
+            'namespace' => $this->namespace,
+            'prefix' => 'center',
+        ], function ($router) {
+            require base_path('routes/center.php');
+        });
+    }
+
 }
