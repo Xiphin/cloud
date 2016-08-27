@@ -88,9 +88,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapCenterRoutes()
     {
         Route::group([
-            'middleware' => ['web', 'auth:center'],
+            'middleware' => ['web'],
             'namespace' => $this->namespace,
-            'prefix' => 'center',
         ], function ($router) {
             require base_path('routes/center.php');
         });

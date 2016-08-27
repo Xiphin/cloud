@@ -11,13 +11,14 @@
 |
 */
 
-// Auth::routes();
+Auth::routes();
 
 // Center登录默认路由
 Route::get('center/login', 'Auth\CenterLoginController@login');
-
-// Center登录执行
 Route::post('center/login', 'Auth\CenterLoginController@login');
+
+// Center退出
+Route::get('center/logout', 'Auth\CenterLoginController@logout');
 
 // Center路由组
 Route::group(['prefix' => 'center','middleware' => ['web','auth:center'],'namespace' => 'Center'], function()
