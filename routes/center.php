@@ -25,4 +25,5 @@ Route::group(['prefix' => 'center','middleware' => ['web','auth:center'],'namesp
 {
     Route::get('index/', 'IndexController@index');
     Route::get('index/index', 'IndexController@index');
+    Route::get('explorer/pathList', 'ExplorerController@pathList');
 });
