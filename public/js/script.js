@@ -10,7 +10,7 @@ $('document').ready(function (argument) {
 	  buttons: [{
 	    'title': 'Settings',
 	    'href': '#settings',
-	    'imgURL': root_path+'resources/assets/dist/images/apps/Settings.png',
+	    'imgURL': root_path+'images/apps/Settings.png',
 	    'onClick': function(){
 					var dialog = art.dialog({
 							title: '欢迎',
@@ -26,39 +26,39 @@ $('document').ready(function (argument) {
 	  },{
 	    'title': 'App Store',
 	    'href': '#AppStore',
-	    'imgURL': root_path+'resources/assets/dist/images/apps/AppStore.png',
+	    'imgURL': root_path+'images/apps/AppStore.png',
 
 	  },{
 	    'title': 'Camera',
 	    'href': '#camera',
-	    'imgURL': root_path+'resources/assets/dist/images/apps/Camera.png',
+	    'imgURL': root_path+'images/apps/Camera.png',
 
 	  },{
 	    'title': 'Games',
 	    'href': '#Games',
-	    'imgURL': root_path+'resources/assets/dist/images/apps/Games.png',
+	    'imgURL': root_path+'images/apps/Games.png',
 
 	  },{
 	    'title': 'Mail',
 	    'href': '#Mail',
-	    'imgURL': root_path+'resources/assets/dist/images/apps/Mail.png',
+	    'imgURL': root_path+'images/apps/Mail.png',
 
 	  },{
 	    'title': 'Music',
 	    'href': '#Music',
-	    'imgURL': root_path+'resources/assets/dist/images/apps/Music.png',
+	    'imgURL': root_path+'images/apps/Music.png',
 		'onClick': function(){
 	          alert('You clicked on the Music icon');
 	     }
 	  },{
 	    'title': 'Safari',
 	    'href': '#Safari',
-	    'imgURL': root_path+'resources/assets/dist/images/apps/Safari.png',
+	    'imgURL': root_path+'images/apps/Safari.png',
 
 	  },{
 	    'title': 'Photos',
 	    'href': '#Photos',
-	    'imgURL': root_path+'resources/assets/dist/images/apps/Photos.png',
+	    'imgURL': root_path+'images/apps/Photos.png',
 
 	  }]
 	});

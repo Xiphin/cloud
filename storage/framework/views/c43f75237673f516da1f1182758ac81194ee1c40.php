@@ -6,20 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>wanpiao</title>
   <!-- Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="{{asset('css/app.css')}}">
+  <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
   <!-- style CSS 文件 -->
-  <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  <link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
     <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
   <!-- MVVM框架 -->
-  <script src="{{asset('js/app.js')}}"></script>
-  <script src="{{asset('js/script.js')}}"></script>
+  <script src="<?php echo e(asset('js/app.js')); ?>"></script>
+  <script src="<?php echo e(asset('js/script.js')); ?>"></script>
   <style>
     body{
-      background-image:url({{asset('images/wallpapers/Lake.jpg')}});
+      background-image:url(<?php echo e(asset('images/wallpapers/Lake.jpg')); ?>);
       padding-top: 0px;
       padding-bottom: 0px;
     }
@@ -53,11 +53,11 @@
 <body>
   <div class="login-container">
     <div class="login-wallpaper">
-      <img src="{{asset('images/wallpapers/Lake.jpg')}}" width="100%" class="blur" />
+      <img src="<?php echo e(asset('images/wallpapers/Lake.jpg')); ?>" width="100%" class="blur" />
     </div>
     <div class="login-box">
       <form class="form-horizontal" id='form'>
-        <div style="width:100%; text-align: center; margin-bottom:60px;"><img src="{{asset('images/icons/logo.png')}}" width="73"></div>
+        <div style="width:100%; text-align: center; margin-bottom:60px;"><img src="<?php echo e(asset('images/icons/logo.png')); ?>" width="73"></div>
         <div class="form-group">
           <label class="sr-only">用户名</label>
           <input type="text" name='username' class="form-control" style="background:rgba(0,0,0,0.50);filter: alpha(opacity=50);color:#fff;" placeholder="输入用户名">
@@ -69,12 +69,13 @@
         <div class="form-group">
           <span style="color:#fff; font-size:24px;">按enter键登录</span>
         </div>
-        {!! csrf_field() !!}
+        <?php echo csrf_field(); ?>
+
       </form>
     </div>
   </div><!-- /.container -->
   <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-  <script src="{{asset('plugins/jquery/1.11.3/jquery.min.js')}}"></script>
+  <script src="<?php echo e(asset('plugins/jquery/1.11.3/jquery.min.js')); ?>"></script>
   <script>
     $(document).ready(function(){  
         //初始化高度  
@@ -89,7 +90,7 @@
             $.ajax({
               cache: true,
               type: "POST",
-              url : '{{ url('center/login') }}',
+              url : '<?php echo e(url('center/login')); ?>',
               data: $('#form').serialize(),
               async: false,
                 success: function(data) {

@@ -53,10 +53,15 @@ class CenterLoginController extends Controller
             $password = $request->input('password');
             if (Auth::guard('center')->attempt(['name' => $username, 'password' => $password])) {
                 // Authentication passed...
-                return redirect()->intended('center');
+                // return redirect()->intended('center/index');
+                $data['code'] = '1';
+                $data['msg']  = '登录成功';
+                $data['url']  = url('center/index');
             } else {
-                return '登录失败';
+                $data['code'] = '0';
+                $data['msg']  = '登录失败';
             }
+            return $data;
         } else {
             return view('auth.centerlogin');
         }
