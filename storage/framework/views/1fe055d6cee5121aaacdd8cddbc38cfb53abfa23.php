@@ -6,19 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>wanpiao</title>
   <!-- Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="{{asset('css/app.css')}}">
+  <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
   <!-- style CSS 文件 -->
-  <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  <link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
     <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
   <!-- MVVM框架 -->
-  <script src="{{asset('js/app.js')}}"></script>
+  <script src="<?php echo e(asset('js/app.js')); ?>"></script>
   <style>
     body{
-      background-image:url({{asset('images/wallpapers/Andromeda%20Galaxy.jpg')}});
+      background-image:url(<?php echo e(asset('images/wallpapers/Andromeda%20Galaxy.jpg')); ?>);
     }
   </style>
 </head>
@@ -86,25 +86,25 @@
 	  <div id="dock"></div>
   </div><!-- /.container -->
   <script type="text/javascript">
-    var root_path = '{{asset('')}}';
+    var root_path = '<?php echo e(asset('')); ?>';
   </script>
   <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-  <script src="{{asset('plugins/jquery/1.11.3/jquery.min.js')}}"></script>
-  <script src="{{asset('plugins/jquery/1.11.3/jquery-ui.min.js')}}"></script>
+  <script src="<?php echo e(asset('plugins/jquery/1.11.3/jquery.min.js')); ?>"></script>
+  <script src="<?php echo e(asset('plugins/jquery/1.11.3/jquery-ui.min.js')); ?>"></script>
 
-  <link rel="stylesheet" href="{{asset('plugins/dock/dockmenu.css')}}">
-  <script src="{{asset('plugins/dock/dockmenu.min.js')}}"></script>
+  <link rel="stylesheet" href="<?php echo e(asset('plugins/dock/dockmenu.css')); ?>">
+  <script src="<?php echo e(asset('plugins/dock/dockmenu.min.js')); ?>"></script>
 
-  <link rel="stylesheet" type="text/css" href="{{asset('plugins/context/css/context.standalone.css')}}">
-	<script src="{{asset('plugins/context/js/context.js')}}"></script>
+  <link rel="stylesheet" type="text/css" href="<?php echo e(asset('plugins/context/css/context.standalone.css')); ?>">
+	<script src="<?php echo e(asset('plugins/context/js/context.js')); ?>"></script>
 
-  <link rel="stylesheet" href="{{asset('plugins/sidebar/css/component.css')}}" />
-  <script src="{{asset('plugins/sidebar/js/modernizr.custom.js')}}"></script>
-	<script src="{{asset('plugins/sidebar/js/classie.js')}}"></script>
+  <link rel="stylesheet" href="<?php echo e(asset('plugins/sidebar/css/component.css')); ?>" />
+  <script src="<?php echo e(asset('plugins/sidebar/js/modernizr.custom.js')); ?>"></script>
+	<script src="<?php echo e(asset('plugins/sidebar/js/classie.js')); ?>"></script>
 
-  <script src="{{asset('plugins/artDialog/4.1.7/jquery.artDialog.source.js?skin=aero')}}"></script>
-  <script src="{{asset('plugins/artDialog/4.1.7/plugins/iframeTools.source.js')}}"></script>
+  <script src="<?php echo e(asset('plugins/artDialog/4.1.7/jquery.artDialog.source.js?skin=aero')); ?>"></script>
+  <script src="<?php echo e(asset('plugins/artDialog/4.1.7/plugins/iframeTools.source.js')); ?>"></script>
   
-  <script src="{{asset('js/script.js')}}"></script>
+  <script src="<?php echo e(asset('js/script.js')); ?>"></script>
 </body>
 </html>
