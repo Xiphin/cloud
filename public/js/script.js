@@ -1,15 +1,9 @@
 $('document').ready(function (argument) {
-	// vue js
-	var vm = new Vue({
-		el: '#desktop',
-		methods: {
-			out: function (event) {
-				$(event.target).removeClass('active');
-			},
-			over: function (event) {
-				$(event.target).addClass('active');
-			}
-		}
+
+  $(".app-box").hover(function(){
+		$(this).addClass('active');
+	},function(){
+		$(this).removeClass('active');
 	});
 
 	//初始化高度  
