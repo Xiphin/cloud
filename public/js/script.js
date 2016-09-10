@@ -1,4 +1,17 @@
 $('document').ready(function (argument) {
+	// vue js
+	var vm = new Vue({
+		el: '#desktop',
+		methods: {
+			out: function (event) {
+				$(event.target).removeClass('active');
+			},
+			over: function (event) {
+				$(event.target).addClass('active');
+			}
+		}
+	});
+
 	//初始化高度  
 	$(".desktop").height($(window).height()-50);  
 	//当文档窗口发生改变时 触发  

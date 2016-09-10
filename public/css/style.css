@@ -46,4 +46,12 @@ a:focus {
 	padding-top: 3px;
 	padding-bottom: 3px;
 }
-.desktop{ width:100%;}
+.desktop ,.desktop a{ width:100%;color: #fff;}
+.clear{ clear: both;}
+.desktop .active{ background-image: url(../images/app_active_bg.png);border: 1px solid #fff; -moz-border-radius: 3px; /* Gecko browsers */-webkit-border-radius: 3px;/* Webkit browsers */border-radius:3px;/* W3C syntax */}
+.desktop .hover{ background-image: url(../images/app_hover_bg.png);border: 1px solid #fff; -moz-border-radius: 3px; /* Gecko browsers */-webkit-border-radius: 3px;/* Webkit browsers */border-radius:3px;/* W3C syntax */}
+.desktop .app-box{text-align: center; margin-top: 20px; padding:1px 10px;}
+.desktop .middle{ width: 82px;}
+.desktop .middle img{ width: 60px;}
+.desktop .middle .app-icon{float: left;}
+.desktop .middle .app-name{ margin-top: 2px; float: left; width: 100%;text-shadow:#000 2px 2px 10px;}
