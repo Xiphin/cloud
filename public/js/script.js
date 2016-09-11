@@ -17,7 +17,16 @@ $('document').ready(function (argument) {
 		$(".app-box").removeClass('active');
 	});
 
+// 程序排列
+// function appsort() {
+// 	appHeight = 0;
+// 	$(".middle").each(function(){
+// 		appHeight = appHeight+$(this).outerHeight(true);
+// 	});
+	
+// }
 
+$(".desktop").height($(window).height()-50);
 	//初始化高度  
 	$(".desktop").height($(window).height()-50);  
 	//当文档窗口发生改变时 触发  
