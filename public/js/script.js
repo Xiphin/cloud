@@ -1,10 +1,24 @@
 $('document').ready(function (argument) {
 
+$('#test').click(function(){alert('xxx')});
+
   $(".app-box").hover(function(){
-		$(this).addClass('active');
+		$(this).addClass('hover');
 	},function(){
-		$(this).removeClass('active');
+		$(this).removeClass('hover');
 	});
+
+  $(".app-box").mousedown(function(){
+		$(".app-box").removeClass('active');
+		$(this).addClass('active');
+		// 阻止冒泡事件
+		return false;
+	});
+
+  $(".desktop").mousedown(function(){
+		$(".app-box").removeClass('active');
+	});
+
 
 	//初始化高度  
 	$(".desktop").height($(window).height()-50);  
