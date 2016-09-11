@@ -1,7 +1,5 @@
 $('document').ready(function (argument) {
 
-$('#test').click(function(){alert('xxx')});
-
   $(".app-box").hover(function(){
 		$(this).addClass('hover');
 	},function(){
