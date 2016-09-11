@@ -41,6 +41,11 @@
 					left : e.clientX,
 					top : e.clientY
 				}) ;
+				// 隐藏右键属性
+				$('.dropdown-menu').css('display','');
+				// 隐藏打开的导航
+				$('.dropdown').removeClass('open');
+				
 			}
 		}) ;
 		div.extend({
