@@ -18,20 +18,34 @@ $('document').ready(function (argument) {
 	});
 
 // 程序排列
-// function appsort() {
-// 	appHeight = 0;
-// 	$(".middle").each(function(){
-// 		appHeight = appHeight+$(this).outerHeight(true);
-// 	});
-	
-// }
+appsort()
+function appsort() {
+	appHeight = 0;
+	desktopHeight = $(window).height()-50;
+
+	width = 10;
+	height = 10;
+	$(".middle").each(function(){
+		appHeight = appHeight+$(this).outerHeight(true);
+		if(appHeight>desktopHeight){
+			width = $(this).outerWidth(true) +width+10;
+			// 重置总高度和图标相对高度
+			appHeight = 0;
+			height = 10;
+		}
+		$(this).css('left',width+'px');
+		$(this).css('top',height+'px');
+		height = $(this).outerHeight(true) +height;
+	});
+}
 
 $(".desktop").height($(window).height()-50);
 	//初始化高度  
 	$(".desktop").height($(window).height()-50);  
 	//当文档窗口发生改变时 触发  
 	$(window).resize(function(){  
-	  $(".desktop").height($(window).height()-50);  
+	  $(".desktop").height($(window).height()-50);
+		appsort();
 	});
 	//定义dock
 	$('#dock').dockmenu({
@@ -136,4 +150,5 @@ $(".desktop").height($(window).height()-50);
 		$('.finale h1:last').css({opacity:0});
 		$('.finale h1:first').css({opacity:1});
 	});
+	
 })
