@@ -58,6 +58,8 @@ $(".desktop").height($(window).height()-50);
 							title: '欢迎',
 							content: '欢迎使用artDialog对话框组件！',
 							icon: 'succeed',
+							// width:100,
+							// height:100,
 							follow: document.getElementById('btn2'),
 							ok: function(){
 									this.title('警告').content('请注意artDialog两秒后将关闭！').lock().time(2);

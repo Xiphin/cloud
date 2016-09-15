@@ -129,14 +129,6 @@ button.aui_state_highlight:active { border-color: #1c6a9e; filter: progid:DXImag
 .aui_close:before { content: "\f00d";}
 .dialogMax .aui_max:before { content: "\f066";}
 .aui_max,.aui_min { display: block;}
-.aui_state_noTitle .aui_nw,.aui_state_noTitle .aui_ne,.aui_state_noTitle .aui_sw,.aui_state_noTitle .aui_se { width: 5px; height: 5px;}
-.aui_state_noTitle .aui_titleBar { bottom: 0; _bottom: 0; _margin-top: 0;}
-.aui_state_noTitle .aui_outer { box-shadow: none; border: none;}
-.aui_state_noTitle .aui_inner { border: 1px solid #ddd; background: none;}
-.aui_state_noTitle .tips { font-size: 14px; padding: 15px; padding-left: 10px;}
-.aui_state_noTitle .aui_nw,.aui_state_noTitle .aui_n,.aui_state_noTitle .aui_ne,.aui_state_noTitle .aui_w,.aui_state_noTitle .aui_e,.aui_state_noTitle .aui_sw,.aui_state_noTitle .aui_s,.aui_state_noTitle .aui_se { background: rgba(0,0,0,0.1); background: #000 \9 !important; filter: alpha(opacity=10)!important;}
-.aui_state_noTitle .aui_content { line-height: 50px;}
-.aui_state_noTitle .aui_close,.aui_state_noTitle .aui_max,.aui_state_noTitle .aui_min { display: none; font-size: 14px;}
 .dialogMax .aui_nw,.dialogMax .aui_ne,.dialogMax .aui_sw,.dialogMax .aui_se,.dialogMax .aui_w,.dialogMax .aui_e { width: 0px;}
 .dialogMax .aui_sw,.dialogMax .aui_n,.dialogMax .aui_se { height: 0px;}
 .dialogMax .aui_outer { border: none;}
