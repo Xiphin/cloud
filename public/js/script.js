@@ -25,7 +25,7 @@ function appsort() {
 
 	width = 10;
 	height = 10;
-	$(".middle").each(function(){
+	$(".app-box").each(function(){
 		appHeight = appHeight+$(this).outerHeight(true);
 		if(appHeight>desktopHeight){
 			width = $(this).outerWidth(true) +width+10;
@@ -35,7 +35,7 @@ function appsort() {
 		}
 		$(this).css('left',width+'px');
 		$(this).css('top',height+'px');
-		height = $(this).outerHeight(true) +height;
+		height = $(this).outerHeight(true) +height+10;
 	});
 }
 
@@ -52,7 +52,7 @@ $(".desktop").height($(window).height()-50);
 	  buttons: [{
 	    'title': 'Settings',
 	    'href': '#settings',
-	    'imgURL': root_path+'images/apps/Settings.png',
+	    'imgURL': root_path+'images/apps/ToolbarCustomizeIcon.png',
 	    'onClick': function(){
 					var dialog = art.dialog({
 							title: '欢迎',
@@ -71,24 +71,24 @@ $(".desktop").height($(window).height()-50);
 	    'imgURL': root_path+'images/apps/AppStore.png',
 
 	  },{
-	    'title': 'Camera',
-	    'href': '#camera',
-	    'imgURL': root_path+'images/apps/Camera.png',
+	    'title': 'Finder',
+	    'href': '#Finder',
+	    'imgURL': root_path+'images/apps/Finder.png',
 
 	  },{
-	    'title': 'Games',
-	    'href': '#Games',
-	    'imgURL': root_path+'images/apps/Games.png',
+	    'title': 'iCloudDrive',
+	    'href': '#iCloudDrive',
+	    'imgURL': root_path+'images/apps/iCloudDrive.png',
 
 	  },{
-	    'title': 'Mail',
-	    'href': '#Mail',
-	    'imgURL': root_path+'images/apps/Mail.png',
+	    'title': 'Dock',
+	    'href': '#Dock',
+	    'imgURL': root_path+'images/apps/Dock.png',
 
 	  },{
-	    'title': 'Music',
-	    'href': '#Music',
-	    'imgURL': root_path+'images/apps/Music.png',
+	    'title': 'Calibrator',
+	    'href': '#Calibrator',
+	    'imgURL': root_path+'images/apps/Calibrator.png',
 		'onClick': function(){
 	          alert('You clicked on the Music icon');
 	     }
@@ -98,9 +98,9 @@ $(".desktop").height($(window).height()-50);
 	    'imgURL': root_path+'images/apps/Safari.png',
 
 	  },{
-	    'title': 'Photos',
-	    'href': '#Photos',
-	    'imgURL': root_path+'images/apps/Photos.png',
+	    'title': 'firefox',
+	    'href': '#firefox',
+	    'imgURL': root_path+'images/apps/firefox.png',
 
 	  }]
 	});
@@ -115,7 +115,12 @@ $(".desktop").height($(window).height()-50);
 	context.settings({compress: true});
 	context.attach('.desktop', [
 		{header: ''},
-		{text: '后退', href: '#'},
+		{text: '查看', subMenu: [
+			{text: '重排图标', action: function(e){
+				e.preventDefault();
+				appsort();
+			}}
+		]},
 		{text: '刷新', href: '#'},
 		{divider: true},
 		{text: '保存', href: '#'},
@@ -139,7 +144,6 @@ $(".desktop").height($(window).height()-50);
 			alert('html contextual menu destroyed!');
 		}}
 	]);
-	
 	
 	$(document).on('mouseover', '.me-codesta', function(){
 		$('.finale h1:first').css({opacity:0});
