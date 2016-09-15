@@ -81,9 +81,9 @@ $(".desktop").height($(window).height()-50);
 	    'imgURL': root_path+'images/apps/iCloudDrive.png',
 
 	  },{
-	    'title': 'Dock',
-	    'href': '#Dock',
-	    'imgURL': root_path+'images/apps/Dock.png',
+	    'title': 'Game Center',
+	    'href': '#Game Center',
+	    'imgURL': root_path+'images/apps/Game Center.png',
 
 	  },{
 	    'title': 'Calibrator',
