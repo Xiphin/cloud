@@ -54,7 +54,7 @@ $(".desktop").height($(window).height()-50);
 	    'href': '#settings',
 	    'imgURL': root_path+'images/apps/ToolbarCustomizeIcon.png',
 	    'onClick': function(){
-					var dialog = art.dialog({
+				$.dialog({
 							title: '欢迎',
 							content: '欢迎使用artDialog对话框组件！',
 							icon: 'succeed',
@@ -116,7 +116,7 @@ $(".desktop").height($(window).height()-50);
 	context.attach('.desktop', [
 		{header: ''},
 		{text: '查看', subMenu: [
-			{text: '重排图标', action: function(e){
+			{text: '自动对齐', action: function(e){
 				e.preventDefault();
 				appsort();
 			}}
