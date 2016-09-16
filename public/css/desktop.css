@@ -12,13 +12,13 @@ a:focus {outline:none;}
 .desktop {position: relative;left:0;padding: 0px;overflow: hidden;}
 .desktop ,.desktop a{ width:100%;color: #fff;}
 .clear{ clear: both;}
-.desktop .active{ background-image: url(../images/app_active_bg.png);}
-.desktop .hover{ background-image: url(../images/app_hover_bg.png);}
-.desktop .app-box{text-align: center;-moz-border-radius: 3px; /* Gecko browsers */-webkit-border-radius: 3px;/* Webkit browsers */border-radius:3px;/* W3C syntax */}
-.desktop .middle{ position:absolute;width: 80px; height: 100px;}
-.desktop .middle img{ width: 60px; margin-top: 5px; margin-left: 10px;}
-.desktop .middle .app-icon{float: left;}
-.desktop .middle .app-name{ font-size: 12px;float: left;background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;border-radius: 18px;line-height: 1.7em;margin-top: 6px;padding-top: 1px;transition: none 0s ease 0s ;width: 80px;color: #fff;text-shadow: 0 0 0 #fff, 0 0 2px #000, 0 0 4px #000;writing-mode: horizontal-tb;}
+.explorer .active,.desktop .active{ background-image: url(../images/app_active_bg.png);}
+.explorer .hover,.desktop .hover{ background-image: url(../images/app_hover_bg.png);}
+.explorer .app-box,.desktop .app-box{text-align: center;-moz-border-radius: 3px; /* Gecko browsers */-webkit-border-radius: 3px;/* Webkit browsers */border-radius:3px;/* W3C syntax */}
+.explorer .middle,.desktop .middle{ position:absolute;width: 80px; height: 100px;}
+.explorer .middle img,.desktop .middle img{ width: 60px; margin-top: 5px; margin-left: 10px;}
+.explorer .middle .app-icon,.desktop .middle .app-icon{float: left;}
+.explorer .middle .app-name,.desktop .middle .app-name{ font-size: 12px;float: left;background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;border-radius: 18px;line-height: 1.7em;margin-top: 6px;padding-top: 1px;transition: none 0s ease 0s ;width: 80px;color: #fff;text-shadow: 0 0 0 #fff, 0 0 2px #000, 0 0 4px #000;writing-mode: horizontal-tb;}
 .dialogMax { z-index: 99999 !important;}
 .aui_outer { text-align: left; position: relative;}
 .aui_mask { position: absolute; width: 100%; height: 100%; background: #fff; opacity: 0.01; filter: alpha(opacity=1);}
