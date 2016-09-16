@@ -54,7 +54,7 @@ $(".desktop").height($(window).height()-50);
 	    'href': '#settings',
 	    'imgURL': root_path+'images/apps/ToolbarCustomizeIcon.png',
 	    'onClick': function(){
-				$.dialog.open('explorer.html',{title: '人人网', width: 320, height: 400});
+				$.dialog.open('explorer.html',{title: '人人网', width: 800, height: 400});
 				// $.dialog({
 				// 			// title: '欢迎',
 				// 			content: '欢迎使用artDialog对话框组件！',
