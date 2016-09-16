@@ -14,7 +14,6 @@
 //------------------------------------------------
 // 对话框模块
 //------------------------------------------------
-
 ;(function ($, window, undefined) {
 
 $.noop = $.noop || function () {}; // jQuery 1.3.2
@@ -442,6 +441,7 @@ artDialog.fn = artDialog.prototype = {
 		that._ie6SelectFix();
 		return that;
 	},
+
 	//控制隐藏和显示
 	display:function(type){
 		var $wrap = this.DOM.wrap;
@@ -495,6 +495,7 @@ artDialog.fn = artDialog.prototype = {
 			dialog_this.zIndex();
 		}
 	},
+
 	has_frame:function(){
 		var f = this.DOM.wrap.find('iframe');
 		if (f.length>=1) {
@@ -513,7 +514,6 @@ artDialog.fn = artDialog.prototype = {
 		window.open(frame.attr('src'));
 		return this;
 	},
-
 	/** 显示对话框 */
 	show: function () {
 		this.DOM.wrap.show();
@@ -890,6 +890,7 @@ artDialog.fn = artDialog.prototype = {
 			});
 			$main.css({
 				'height':$wrap.data('initSize').height
+				//'height':'200px'
 			});
 		}else{//最大化
 			var dialogDom = $wrap.context;
@@ -915,16 +916,24 @@ artDialog.fn = artDialog.prototype = {
 				'height':(_$window.height()-header_height-5)  + 'px'
 			});
 		}
+		//that.reset_title_length();
 	},
 	_clickMin:function(){
 		try{
-			//if (TaskTap!=undefined){
+			if (TaskTap!=undefined){
 				this.display(false);
-			//}
+			}
 		} catch(e) {};
 	},
 	// 重置位置与尺寸
 	_reset: function (test) {
+		//最大化时，窗口调整保持
+		if (this.DOM.wrap.hasClass('dialogMax')) {
+			this.DOM.wrap.css('width',_$window.width());
+			this.DOM.main[0].style.height = (_$window.height()-_titleBarHeight) + 'px';
+			return;
+		}
+
 		var newSize,
 			that = this,
 			oldSize = that._winSize || _$window.width() * _$window.height(),
@@ -967,12 +976,10 @@ artDialog.fn = artDialog.prototype = {
 		_$window.bind('resize', that._winResize);
 		
 		// 监听点击
-		DOM.wrap
-		.bind('click', function (event) {
+		DOM.wrap.bind('click', function (event) {
 			var target = event.target, callbackID;
-			
 			if (target.disabled) return false; // IE BUG
-			
+
 			var clickClass = $(target).attr('class');
 			//最大化 最小化 关闭
 			switch(clickClass){
@@ -985,7 +992,6 @@ artDialog.fn = artDialog.prototype = {
 					callbackID = target[_expando + 'callback'];
 					callbackID && that._click(callbackID);
 			}
-			that._ie6SelectFix();
 		})
 		.bind('mousedown', function () {
 			that.zIndex();
@@ -1091,7 +1097,7 @@ try {
 // 使用uglifyjs压缩能够预先处理"+"号合并字符串
 // uglifyjs: http://marijnhaverbeke.nl/uglifyjs
 artDialog._templates =
-'<div class="aui_outer">'
+'<div class="aui_outer animated dialogShow"><div class="aui_mask"></div>'
 +	'<table class="aui_border">'
 +		'<tbody>'
 +			'<tr>'
@@ -1141,6 +1147,15 @@ artDialog._templates =
 +			'</tr>'
 +		'</tbody>'
 +	'</table>'
+
++	'<div class="resize-handle resize-top" resize="top"></div>'
++	'<div class="resize-handle resize-right" resize="right"></div>'
++	'<div class="resize-handle resize-bottom" resize="bottom"></div>'
++	'<div class="resize-handle resize-left" resize="left"></div>'
++	'<div class="resize-handle resize-top-right" resize="top-right"></div>'
++	'<div class="resize-handle resize-bottom-right" resize="bottom-right"></div>'
++	'<div class="resize-handle resize-bottom-left" resize="bottom-left"></div>'
++	'<div class="resize-handle resize-top-left" resize="top-left"></div>'
 +'</div>';
 
 

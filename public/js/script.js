@@ -54,18 +54,19 @@ $(".desktop").height($(window).height()-50);
 	    'href': '#settings',
 	    'imgURL': root_path+'images/apps/ToolbarCustomizeIcon.png',
 	    'onClick': function(){
-				$.dialog({
-							title: '欢迎',
-							content: '欢迎使用artDialog对话框组件！',
-							icon: 'succeed',
-							// width:100,
-							// height:100,
-							follow: document.getElementById('btn2'),
-							ok: function(){
-									this.title('警告').content('请注意artDialog两秒后将关闭！').lock().time(2);
-									return false;
-							}
-					});
+				$.dialog.open('explorer.html',{title: '人人网', width: 320, height: 400});
+				// $.dialog({
+				// 			// title: '欢迎',
+				// 			content: '欢迎使用artDialog对话框组件！',
+				// 			icon: 'succeed',
+				// 			// width:100,
+				// 			// height:100,
+				// 			//follow: document.getElementById('btn2'),
+				// 			// ok: function(){
+				// 			// 		this.title('警告').content('请注意artDialog两秒后将关闭！').lock().time(2);
+				// 			// 		return false;
+				// 			// }
+				// 	});
 	     }
 	  },{
 	    'title': 'App Store',
