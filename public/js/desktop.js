@@ -56,7 +56,7 @@ $(".desktop").height($(window).height()-50);
 	    'onClick': function(){
 				// $.dialog.open('explorer.html',{title: '人人网', width: 800, height: 400});
 				$.dialog({
-							// title: '欢迎',
+							 title: '<img src=http://www.uimaker.com/uploads/allimg/20140725/1406252048114924.jpg> 欢迎',
 							content: '欢迎使用artDialog对话框组件！',
 							icon: 'succeed',
 							// width:100,
