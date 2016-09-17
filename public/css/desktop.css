@@ -51,19 +51,23 @@ button.aui_state_highlight:active { border-color: #1c6a9e; filter: progid:DXImag
 .aui_outer { border: 1px solid #666; border-radius: 5px; box-shadow: 0 0px 15px rgba(0,0,0,0.5);}
 .aui_state_focus .aui_outer { box-shadow: 0 0px 70px rgba(0,0,0,0.5);}
 .aui_state_lock .aui_outer { box-shadow: 0 3px 26px rgba(0,0,0,0.9);}
-.aui_border { border-radius: 3px;}
+.aui_border { 
+    border-radius: 3px;
+    }
 .aui_nw,.aui_ne { width: 4px; height: 37px;}
 .aui_sw,.aui_se { width: 4px; height: 4px;}
-.aui_nw,.aui_n,.aui_ne,.aui_w,.aui_e,.aui_sw,.aui_s,.aui_se { background: #000 \9 !important; background: #000; opacity: 0.5; filter: alpha(opacity=50);}
+.aui_nw,.aui_n,.aui_ne,.aui_w,.aui_e,.aui_sw,.aui_s,.aui_se { background: #f6f6f6 \9 !important; background: #f6f6f6;}
 .aui_state_focus .aui_mask { display: none;}
 .aui_titleBar { width: 100%; height: 0; position: relative; bottom: 33px; _bottom: 0; _margin-top: -33px;}
-.aui_title { height: 27px; line-height: 27px; padding: 0 16px 0 0px; color: #FFF; font-weight: 700; text-shadow: 0 1px 0 #000;}
-.aui_min,.aui_max,.aui_close { display: block; position: absolute; text-decoration: none; outline: none; cursor: pointer; font-size: 16px; color: #EBEBEB; top: 0px; border: 1px solid transparent; _border: 0 none; height: 20px; width: 20px; font-size: 14px; line-height: 20px; text-align: center; font-family: FontAwesome; background: #666; border-radius: 10px;}
-.aui_min:hover,.aui_max:hover,.aui_close:hover { background: #C72015; text-decoration: none; border: 1px solid #666; _border: 0 none; color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,0.3), inset 0 1px 0 rgba(255,255,255,0.3);}
+.aui_title { height: 27px; line-height: 27px; padding: 0 16px 0 0px; color: #cccccc; font-weight: 700; text-align: center;}
+.aui_min,.aui_max,.aui_close { display: block; position: absolute; text-decoration: none; outline: none; cursor: pointer; font-size: 16px; color: #EBEBEB; top: 0px; border: 1px solid transparent; _border: 0 none; height: 20px; width: 20px; font-size: 14px; line-height: 20px; text-align: center; font-family: FontAwesome; background: #dddddd; border-radius: 10px;}
+.aui_close:hover { background: #f5544d; text-decoration: none; border: 1px solid #bc1b14; _border: 0 none; color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,0.3), inset 0 1px 0 rgba(255,255,255,0.3);}
+.aui_max:hover { background: #f0d765; text-decoration: none; border: 1px solid #c0a630; _border: 0 none; color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,0.3), inset 0 1px 0 rgba(255,255,255,0.3);}
+.aui_min:hover { background: #97cd75; text-decoration: none; border: 1px solid #75a754; _border: 0 none; color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,0.3), inset 0 1px 0 rgba(255,255,255,0.3);}
 .aui_min:active,.aui_max:active,.aui_close:active { box-shadow: none; background: #f00;}
-.aui_min { right: 65px; content: "\f068";}
-.aui_max { right: 35px; content: "\f065";}
-.aui_close { right: 5px; content: "\f00d";}
+.aui_min { top:4px;right: 65px; content: "\f068";color: #dddddd;}
+.aui_max { top:4px;right: 35px; content: "\f065";color: #dddddd;}
+.aui_close { top:4px;right: 5px; content: "\f00d";color: #dddddd;}
 .aui_min:before { content: "\f068";}
 .aui_max:before { content: "\f065";}
 .aui_close:before { content: "\f00d";}
@@ -82,4 +86,3 @@ button.aui_state_highlight:active { border-color: #1c6a9e; filter: progid:DXImag
 .dialog-can-resize .resize-top-left { cursor: nw-resize; width: 15px; height: 15px; left: -5px; top: -5px;}
 .dialog-can-resize .resize-top-right { cursor: ne-resize; width: 15px; height: 15px; right: -5px; top: -5px;}
 .dialog-can-resize .aui_min,.dialog-can-resize .aui_max { display: block;}
-body div.dialog-simple.aui_state_drag .aui_header { opacity: 1; filter: alpha(opacity=100);}
