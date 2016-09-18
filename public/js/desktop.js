@@ -56,11 +56,14 @@ $(".desktop").height($(window).height()-50);
 	    'onClick': function(){
 				// $.dialog.open('explorer.html',{title: '人人网', width: 800, height: 400});
 				$.dialog({
-							 title: '<img src=http://www.uimaker.com/uploads/allimg/20140725/1406252048114924.jpg> 欢迎',
+							title: '<img src=http://www.uimaker.com/uploads/allimg/20140725/1406252048114924.jpg> 欢迎',
 							content: '欢迎使用artDialog对话框组件！',
-							icon: 'succeed',
-							// width:100,
-							// height:100,
+							// icon: 'succeed',
+							width:400,
+							height:100,
+							padding:'0px',
+							minWidth: 96,				// 最小宽度限制
+							minHeight: 200,				// 最小高度限制
 							//follow: document.getElementById('btn2'),
 							// ok: function(){
 							// 		this.title('警告').content('请注意artDialog两秒后将关闭！').lock().time(2);
