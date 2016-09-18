@@ -180,6 +180,7 @@ table.aui_border,table.aui_dialog {
 	display: block;
 	width: 100%;
 	height: 100%;
+	overflow :auto;
 }
 .aui_content.aui_state_full {
 	display: block;
