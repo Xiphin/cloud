@@ -150,6 +150,16 @@ class Validator implements ValidatorContract
     protected $sizeRules = ['Size', 'Between', 'Min', 'Max'];
 
     /**
+     * The validation rules that may be applied to files.
+     *
+     * @var array
+     */
+    protected $fileRules = [
+        'File', 'Image', 'Mimes', 'Mimetypes', 'Min', 'Max',
+        'Size', 'Between', 'Dimensions',
+    ];
+
+    /**
      * The numeric related validation rules.
      *
      * @var array
@@ -513,11 +523,21 @@ class Validator implements ValidatorContract
             $parameters = $this->replaceAsterisksInParameters($parameters, $keys);
         }
 
-        // We will get the value for the given attribute from the array of data and then
-        // verify that the attribute is indeed validatable. Unless the rule implies
-        // that the attribute is required, rules are not run for missing values.
         $value = $this->getValue($attribute);
 
+        // If the attribute is a file, we will verify that the file upload was actually successful
+        // and if it wasn't we will add a failure for the attribute. Files may not successfully
+        // upload if they are too large based on PHP's settings so we will bail in this case.
+        if (
+            $value instanceof UploadedFile && ! $value->isValid() &&
+            $this->hasRule($attribute, array_merge($this->fileRules, $this->implicitRules))
+        ) {
+            return $this->addFailure($attribute, 'uploaded', []);
+        }
+
+        // If we have made it this far we will make sure the attribute is validatable and if it is
+        // we will call the validation method with the attribute. If a method returns false the
+        // attribute is invalid and we will add a failure message for this failing attribute.
         $validatable = $this->isValidatable($rule, $attribute, $value);
 
         $method = "validate{$rule}";
@@ -751,18 +771,28 @@ class Validator implements ValidatorContract
     }
 
     /**
-     * Stop on error if "bail" rule is assigned and attribute has a message.
+     * Check if we should stop further validations on a given attribute.
      *
      * @param  string  $attribute
      * @return bool
      */
     protected function shouldStopValidating($attribute)
     {
-        if (! $this->hasRule($attribute, ['Bail'])) {
-            return false;
+        if ($this->hasRule($attribute, ['Bail'])) {
+            return $this->messages->has($attribute);
         }
 
-        return $this->messages->has($attribute);
+        if (isset($this->failedRules[$attribute]) &&
+            in_array('uploaded', array_keys($this->failedRules[$attribute]))) {
+            return true;
+        }
+
+        // In case the attribute has any rule that indicates that the field is required
+        // and that rule already failed then we should stop validation at this point
+        // as now there is no point in calling other rules with this field empty.
+        return $this->hasRule($attribute, $this->implicitRules) &&
+               isset($this->failedRules[$attribute]) &&
+               array_intersect(array_keys($this->failedRules[$attribute]), $this->implicitRules);
     }
 
     /**
@@ -1577,11 +1607,11 @@ class Validator implements ValidatorContract
             (
                 ([\pL\pN\pS-\.])+(\.?([\pL]|xn\-\-[\pL\pN-]+)+\.?) # a domain name
                     |                                              # or
-                \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}                 # a IP address
+                \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}                 # an IP address
                     |                                              # or
                 \[
                     (?:(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-f]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-f]{1,4})))?::(?:(?:(?:[0-9a-f]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,1}(?:(?:[0-9a-f]{1,4})))?::(?:(?:(?:[0-9a-f]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,2}(?:(?:[0-9a-f]{1,4})))?::(?:(?:(?:[0-9a-f]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,3}(?:(?:[0-9a-f]{1,4})))?::(?:(?:[0-9a-f]{1,4})):)(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,4}(?:(?:[0-9a-f]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-f]{1,4})):(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,5}(?:(?:[0-9a-f]{1,4})))?::)(?:(?:[0-9a-f]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-f]{1,4})):){0,6}(?:(?:[0-9a-f]{1,4})))?::))))
-                \]  # a IPv6 address
+                \]  # an IPv6 address
             )
             (:[0-9]+)?                              # a port (optional)
             (/?|/\S+|\?\S*|\#\S*)                   # a /, nothing, a / with something, a query or a fragment
@@ -2415,6 +2445,20 @@ class Validator implements ValidatorContract
     protected function replaceInArray($message, $attribute, $rule, $parameters)
     {
         return str_replace(':other', $this->getAttribute($parameters[0]), $message);
+    }
+
+    /**
+     * Replace all place-holders for the mimetypes rule.
+     *
+     * @param  string  $message
+     * @param  string  $attribute
+     * @param  string  $rule
+     * @param  array   $parameters
+     * @return string
+     */
+    protected function replaceMimetypes($message, $attribute, $rule, $parameters)
+    {
+        return str_replace(':values', implode(', ', $parameters), $message);
     }
 
     /**
