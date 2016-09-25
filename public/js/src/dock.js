@@ -9,19 +9,20 @@ define("src/dock", ["jquery","jquery-ui","artDialog"], function(require) {
 	    'onClick': function(){
 				$.dialog({
 							title: '<img src=http://www.uimaker.com/uploads/allimg/20140725/1406252048114924.jpg> 欢迎',
-							content: '<div style=\'color:red\'>hi</div>欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！欢迎使用artDialog对话框组件！',
-							// icon: 'succeed',
+							content: '<div id=\"demo\"><p>{{message}}</p><input v-model=\"message\"></div>',
 							width:800,
 							height:450,
 							padding:'0px',
 							minWidth: 96,				// 最小宽度限制
 							minHeight: 200,				// 最小高度限制
-							//follow: document.getElementById('btn2'),
-							// ok: function(){
-							// 		this.title('警告').content('请注意artDialog两秒后将关闭！').lock().time(2);
-							// 		return false;
-							// }
 					});
+
+					var demo = new Vue({
+						el: '#demo',
+						data: {
+							message: 'Hello Vue.js!'
+						}
+					})
 	     }
 	  },{
 	    'title': 'App Store',
