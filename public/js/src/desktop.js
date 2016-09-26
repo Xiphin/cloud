@@ -28,7 +28,7 @@ define("src/desktop", ["jquery","appsort","artDialog"], function(require) {
 			$(".app-box").removeClass('active');
 			$(this).addClass('active');
 			// 阻止冒泡事件
-			return false;
+			//return false;
 		});
 		$(".desktop").mousedown(function(){
 			$(".app-box").removeClass('active');
