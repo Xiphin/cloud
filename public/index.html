@@ -16,13 +16,18 @@
     <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <!-- MVVM框架 -->
-  <script src="js/app.js"></script>
   <style>
     body{
       background-image:url('images/wallpapers/Andromeda%20Galaxy.jpg');
     }
   </style>
+	<style type="text/css">
+		#list1, #list2 { width:350px; list-style-type:none; margin:0px; }
+		#list1 li, #list2 li { float:left; padding:5px; width:100px; height:100px; }
+		#list1 div, #list2 div { width:90px; height:50px; border:solid 1px black; background-color:#E0E0E0; text-align:center; padding-top:40px; }
+		#list2 { float:right; }
+		.placeHolder div { background-color:white !important; border:dashed 1px gray !important; }
+	</style>
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -82,17 +87,21 @@
     <a href="#">小明的故事书</a>
   </nav>
   <div class="container desktop" id="desktop">
-    <div class='app-list'>
+    <ul class='app-list'>
+      <li>
         <div class="app-box middle" title='love' name='aboutus'>
           <span class="app-icon"><img src="images/apps/com.apple.imac-aluminum-24.png" alt="我的电脑" class="img-rounded"></span>
           <span class="app-name">我的电脑</span>
           <div class="clear"></div>
         </div>
+      </li>
+      <li>
         <div class="app-box middle">
           <span class="app-icon"><img src="images/apps/TrashIcon.png" alt="回收站" class="img-rounded"></span>
           <span class="app-name">回收站</span>
           <div class="clear"></div>
         </div>
+      </li>
         <div class="app-box middle">
           <span class="app-icon"><img src="images/apps/ToolbarCustomizeIcon.png" alt="系统设置" class="img-rounded"></span>
           <span class="app-name">系统设置</span>
@@ -113,9 +122,21 @@
           <span class="app-name">控制台</span>
           <div class="clear"></div>
         </div>
-    </div>
+    </ul>
+	<div id="list1">
+		<li><div>2</div></li>
+		<li><div>3</div></li>
+		<li><div>4</div></li>
+		<li><div>5</div></li>
+		<li><div>6</div></li>
+		<li><div>7</div></li>
+		<li><div>8</div></li>
+		<li><div>9</div></li>
+	</div>
+
         <input id='pointX' type='hidden'>
         <input id='pointY' type='hidden'>
+	      <input name="list1SortOrder" type="hidden" />
 	  <div id="dock"></div>
   </div><!-- /.container -->
   <!--引入插件开始-->
@@ -129,7 +150,6 @@
   </script>
   <script src="js/dist/sea.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/vm.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
 </body>
