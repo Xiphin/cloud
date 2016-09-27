@@ -20,6 +20,13 @@ define("src/desktop", ["jquery","appsort","artDialog"], function(require) {
 			});
 		})
 
+		// 任务栏程序
+		$(".navbar-nav-right").on("click",'li', function() {
+			id = $(this).attr('id');
+			$.dialog.list[id].display(true);
+		})
+
+
 		$(".app-box").hover(function(){
 			$(this).addClass('hover');
 		},function(){

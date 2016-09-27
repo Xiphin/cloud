@@ -67,13 +67,13 @@ a:focus {
 .clear {
 	clear: both;
 }
-.explorer .active,.desktop .active {
+.desktop .active {
 	background-image: url(../images/app_active_bg.png);
 }
-.explorer .hover,.desktop .hover {
+.desktop .hover {
 	background-image: url(../images/app_hover_bg.png);
 }
-.explorer .app-box,.desktop .app-box {
+.desktop .app-box {
 	text-align: center;
 	-moz-border-radius: 3px;
 	/* Gecko browsers*/
@@ -82,20 +82,20 @@ a:focus {
 	border-radius:3px;
 	/* W3C syntax*/
 }
-.explorer .middle,.desktop .middle {
+.desktop .middle {
 	position:absolute;
 	width: 80px;
 	height: 100px;
 }
-.explorer .middle img,.desktop .middle img {
+.desktop .middle img {
 	width: 60px;
 	margin-top: 5px;
 	margin-left: 10px;
 }
-.explorer .middle .app-icon,.desktop .middle .app-icon {
+.desktop .middle .app-icon {
 	float: left;
 }
-.explorer .middle .app-name,.desktop .middle .app-name {
+.desktop .middle .app-name {
 	font-size: 12px;
 	float: left;
 	background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
