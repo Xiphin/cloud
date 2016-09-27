@@ -3,7 +3,8 @@ define("src/tdrag", [ "tdrag", "jquery" ], function(require) {
     $(".app-box").Tdrag({
         scope:".app-list",
         // pos:true,
-        // dragChange:true
+        dragChange:true,
+        changeMode:"sort"
     });
   });
 })

@@ -76,11 +76,18 @@ var artDialog = function (config, ok, cancel) {
 	
 	// zIndex全局配置
 	artDialog.defaults.zIndex = config.zIndex;
-	
 	_count ++;
-	
-	return artDialog.list[config.id] = _box ?
-		_box._init(config) : new artDialog.fn._init(config);
+
+	//添加到任务栏
+	if (config && config.hasOwnProperty('title') && config['title'] !== false){
+		if (_count>1) {
+			$('.navbar-nav-right').prepend('<li id='+config.id+'><a href=\'#\'>'+config.title+'</a></li>');
+		}
+	}
+
+	var dialog = new artDialog.fn._init(config);
+	artDialog.list[config.id] = dialog;
+	return dialog;
 };
 
 artDialog.fn = artDialog.prototype = {
@@ -448,7 +455,6 @@ artDialog.fn = artDialog.prototype = {
 		var that = this;
 		if(type == undefined) type = true;//默认显示
 		if (type){//显示
-			that.reset_title_length();
 			this.zIndex();
 			if ($wrap.css('visibility') != 'hidden') return this;
 			$wrap
@@ -457,7 +463,6 @@ artDialog.fn = artDialog.prototype = {
 				.stop(true,true)
 				.animate({opacity:1},{duration:200,complete:function(){
 					$wrap.removeClass('animated').removeClass('dialogDisplayShow');
-					that.reset_title_length();
 				}});
 		}else{//隐藏  left+10000；
 			if ($wrap.css('visibility') == 'hidden') return this;
@@ -552,7 +557,9 @@ artDialog.fn = artDialog.prototype = {
 		DOM.title.html('');
 		DOM.content.html('');
 		DOM.buttons.html('');
-		
+		// 删除状态栏tang
+		$("#"+that.config.id).remove();
+
 		if (artDialog.focus === that) artDialog.focus = null;
 		if (follow) follow.removeAttribute(_expando + 'follow');
 		delete list[that.config.id];
@@ -566,7 +573,6 @@ artDialog.fn = artDialog.prototype = {
 		
 		// 移除HTMLElement或重用
 		_box ? wrap.remove() : _box = that;
-		
 		return that;
 	},
 	
@@ -916,13 +922,10 @@ artDialog.fn = artDialog.prototype = {
 				'height':(_$window.height()-header_height-5)  + 'px'
 			});
 		}
-		//that.reset_title_length();
 	},
 	_clickMin:function(){
 		try{
-			if (TaskTap!=undefined){
-				this.display(false);
-			}
+			this.display(false);
 		} catch(e) {};
 	},
 	// 重置位置与尺寸
