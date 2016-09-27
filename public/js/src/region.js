@@ -27,7 +27,7 @@ define("src/region", ["jquery"], function(require) {
 			opacity : "0.2"
 		}).appendTo($("body")) ;
 		var isDown = false ;
-		$('.desktop').mousedown(function(e) {
+		$('.app-list').mousedown(function(e) {
 			if(e.target == this) {
 				e.preventDefault() ;
 				if(div.dom().setCapture) {

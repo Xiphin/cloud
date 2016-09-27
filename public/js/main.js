@@ -7,8 +7,7 @@ seajs.config({
     "context": "dist/context/js/context.js",
     "sidebar-modernizr": "dist/sidebar/js/modernizr.custom.js",
     "sidebar-classie": "dist/sidebar/js/classie.js",
-    "dad": "dist/dad/jquery.dad.min.js",
-    "dragsort": "dist/jquery.dragsort-0.5.2.min.js",
+    "tdrag": "dist/tdrag/tdrag.js",
     "appsort": "dist/appsort/appsort.js",
     }
 });
@@ -17,5 +16,4 @@ seajs.use("src/desktop");
 seajs.use("src/context");
 seajs.use("src/menuRight");
 seajs.use("src/dock");
-// seajs.use("src/dad");
-seajs.use("src/dragsort");
+seajs.use("src/tdrag");
