@@ -12,10 +12,11 @@ define("src/desktop", ["jquery","appsort","artDialog"], function(require) {
 			appsort.init();
 		});
 
+		// 打开对应程序
 		$(".app-box").on("dblclick", function() {
 			name = $(this).attr('name');
 			seajs.use("app/"+name,function() {
-				init();
+				eval(name+"()");
 			});
 		})
 
