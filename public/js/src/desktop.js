@@ -23,7 +23,13 @@ define("src/desktop", ["jquery","appsort","artDialog"], function(require) {
 		// 任务栏程序
 		$(".navbar-nav-right").on("click",'li', function() {
 			id = $(this).attr('id');
-			$.dialog.list[id].display(true);
+			display = $('.'+id).css('visibility');
+			if(display != 'hidden'){
+				$.dialog.list[id].display(false);
+			} else {
+				$.dialog.list[id].display(true);
+			}
+
 		})
 
 		// dock程序
