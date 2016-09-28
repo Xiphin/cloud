@@ -78,10 +78,35 @@ var artDialog = function (config, ok, cancel) {
 	artDialog.defaults.zIndex = config.zIndex;
 	_count ++;
 
-	//添加到任务栏
+	// 添加图标
 	if (config && config.hasOwnProperty('title') && config['title'] !== false){
 		if (_count>1) {
-			$('.navbar-nav-right').prepend('<li id='+config.id+'><a href=\'#\'>'+config.title+'</a></li>');
+			if(config.appicon) {
+				config.title = '<img draggable="false" src="'+config.appicon+'" />'+config.title;
+			}
+		}
+	}
+
+	//添加到任务栏
+	if(config['toolbar']) {
+		if (config && config.hasOwnProperty('title') && config['title'] !== false){
+			if (_count>1) {
+				if(config.appicon) {
+					$('.navbar-nav-right').prepend('<li id='+config.id+'><a href=\'#\'><img src="'+config.appicon+'"/></a></li>');
+				} else {
+					$('.navbar-nav-right').prepend('<li id='+config.id+'><a href=\'#\'>'+config.title+'</a></li>');
+				}
+			}
+		}
+	}
+
+	//添加到dock
+	if(config['dockbar']) {
+		if (config && config.hasOwnProperty('title') && config['title'] !== false){
+			if (_count>1) {
+				dockstring = '<li class="" id='+config.id+'><a href="#'+config.title+'"><span style="display: none;">'+config.title+'</span><img src="'+config.appicon+'"></a></li>';
+				$('#dock-menu-list').append(dockstring);
+			}
 		}
 	}
 
@@ -558,7 +583,7 @@ artDialog.fn = artDialog.prototype = {
 		DOM.content.html('');
 		DOM.buttons.html('');
 		// 删除状态栏tang
-		$("#"+that.config.id).remove();
+		$("ul #"+that.config.id).remove();
 
 		if (artDialog.focus === that) artDialog.focus = null;
 		if (follow) follow.removeAttribute(_expando + 'follow');
@@ -1199,8 +1224,10 @@ artDialog.defaults = {
 	top: '38.2%',				// Y轴坐标
 	zIndex: 1987,				// 对话框叠加高度值(重要：此值不能超过浏览器最大限制)
 	resize: true,				// 是否允许用户调节尺寸
-	drag: true					// 是否允许用户拖动位置
-	
+	drag: true,					// 是否允许用户拖动位置
+	appicon: null,				// 应用程序图标
+	toolbar:true,				// 应用打开时添加到工具栏
+	dockbar:false,				// 应用打开时添加到dock
 };
 
 window.artDialog = $.dialog = $.artDialog = artDialog;

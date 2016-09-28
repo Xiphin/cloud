@@ -26,6 +26,11 @@ define("src/desktop", ["jquery","appsort","artDialog"], function(require) {
 			$.dialog.list[id].display(true);
 		})
 
+		// dock程序
+		$("#dock-menu-list").on("click",'li', function() {
+			id = $(this).attr('id');
+			$.dialog.list[id].display(true);
+		})
 
 		$(".app-box").hover(function(){
 			$(this).addClass('hover');
