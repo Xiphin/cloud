@@ -131,7 +131,17 @@ artDialog.fn = artDialog.prototype = {
 		that.config = config;
 		that.DOM = DOM = that.DOM || that._getDOM();
 		
-		DOM.wrap.addClass(config.skin);
+		//是否可以调节大小 对应样式处理
+		if (config.simple && config.title != false) {
+			DOM.wrap.addClass('dialog-simple');
+			DOM.wrap.die('mouseenter').live('mouseenter',function(){
+				$(this).find('.aui_outer').addClass('dialog_mouse_in');
+			}).live('mouseleave',function(){
+				$(this).find('.aui_outer').removeClass('dialog_mouse_in');
+			});
+		}
+		DOM.wrap.find('.dialog_menu').attr('id',config.id);
+		DOM.wrap.addClass(config.id);
 		DOM.close[config.cancel === false ? 'hide' : 'show']();
 		DOM.icon[0].style.display = icon ? '' : 'none';
 		DOM.iconBg.css(iconBg || {background: 'none'});
