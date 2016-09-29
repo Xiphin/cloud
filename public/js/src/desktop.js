@@ -1,4 +1,4 @@
-define("src/desktop", ["jquery","appsort","artDialog"], function(require) {
+define("src/desktop", ["jquery","appsort","artDialog","bootstrap-table"], function(require) {
 
 		// 程序排列
 		appsort.init();
@@ -19,7 +19,6 @@ define("src/desktop", ["jquery","appsort","artDialog"], function(require) {
 				eval(name+"()");
 			});
 		})
-
 		// 任务栏程序
 		$(".navbar-nav-right").on("click",'li', function() {
 			id = $(this).attr('id');
