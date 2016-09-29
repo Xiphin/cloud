@@ -9,6 +9,7 @@ seajs.config({
     "sidebar-classie": "dist/sidebar/js/classie.js",
     "tdrag": "dist/tdrag/tdrag.js",
     "appsort": "dist/appsort/appsort.js",
+    "bootstrap-table": "dist/bootstrapTable/bootstrap-table.min.js",
     }
 });
 seajs.use("src/region");
