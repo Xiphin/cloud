@@ -1,4 +1,4 @@
-define("src/desktop", ["jquery","appsort","artDialog","bootstrap-table"], function(require) {
+define("src/desktop", ["jquery","bootstrap","appsort","artDialog","bootstrap-table","bootstrap-editable"], function(require) {
 
 		// 程序排列
 		appsort.init();
