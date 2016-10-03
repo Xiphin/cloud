@@ -71,13 +71,13 @@ a:focus {
 .clear {
 	clear: both;
 }
-.desktop .active {
+.explorer-main-content .active,.desktop .active {
 	background-image: url(../images/app_active_bg.png);
 }
-.desktop .hover {
+.explorer-main-content .hover,.desktop .hover {
 	background-image: url(../images/app_hover_bg.png);
 }
-.desktop .app-box {
+.explorer-main-content .app-box,.desktop .app-box {
 	text-align: center;
 	-moz-border-radius: 3px;
 	/* Gecko browsers*/
@@ -86,20 +86,20 @@ a:focus {
 	border-radius:3px;
 	/* W3C syntax*/
 }
-.desktop .middle {
+.explorer-main-content .middle,.desktop .middle {
 	position:absolute;
 	width: 80px;
 	height: 100px;
 }
-.desktop .middle img {
+.explorer-main-content .middle img,.desktop .middle img {
 	width: 60px;
 	margin-top: 5px;
 	margin-left: 10px;
 }
-.desktop .middle .app-icon {
+.explorer-main-content .middle app-icon,.desktop .middle .app-icon {
 	float: left;
 }
-.desktop .middle .app-name {
+.explorer-main-content .middle app-name,.desktop .middle .app-name {
 	font-size: 12px;
 	float: left;
 	background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
@@ -189,7 +189,7 @@ table.aui_border,table.aui_dialog {
 	display: block;
 	width: 100%;
 	height: 100%;
-	overflow :auto;
+	/*overflow :auto;*/
 }
 .aui_content.aui_state_full {
 	display: block;
@@ -539,3 +539,7 @@ body .aui_dialog {
 	-webkit-border-bottom-right-radius: 6px;
 	border-bottom-right-radius: 6px;
 }
+.explorer-topbar{ width: 100%; height: 25px; background: #f6f6f6;}
+.explorer-main{ width: 100%; height: 100%; background: #fff;}
+.explorer-main-menu{ width: 150px; height: 100%; background: red; float: left}
+.explorer-main-content{width: 80%;width:-moz-calc(100% - 150px);width:-webkit-calc(100% - 150px);width: calc(100% - 150px);height: 100%; float: left;overflow-y: auto;}
