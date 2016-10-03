@@ -1,4 +1,4 @@
-define("src/desktop", ["jquery","bootstrap","appsort","artDialog","bootstrap-table","bootstrap-editable"], function(require) {
+define("src/desktop", ["jquery","appsort","artDialog"], function(require) {
 
 		// 程序排列
 		appsort.init();
@@ -14,11 +14,21 @@ define("src/desktop", ["jquery","bootstrap","appsort","artDialog","bootstrap-tab
 
 		// 打开对应程序
 		$(".app-box").on("dblclick", function() {
-			name = $(this).attr('name');
+			var appObject = $(this);
+			// 加载动态调用的js
+			name = appObject.attr('name');
 			seajs.use("app/"+name,function() {
-				eval(name+"()");
+				//动态调用方法、并传递参数
+				doCallback(eval(name),[appObject]);  
 			});
-		})
+		});
+
+		// 定义执行回调函数方法
+		function doCallback(fn,args)    
+		{    
+			fn.apply(this, args);  
+		}
+
 		// 任务栏程序
 		$(".navbar-nav-right").on("click",'li', function() {
 			id = $(this).attr('id');

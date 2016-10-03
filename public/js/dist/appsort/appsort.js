@@ -5,7 +5,7 @@ var appsort = appsort || (function () {
 
 		width = 10;
 		height = 10;
-		$(".app-box").each(function(){
+		$(".desktop .app-list .app-box").each(function(){
 			appHeight = appHeight+$(this).outerHeight(true);
 			if(appHeight>desktopHeight){
 				width = $(this).outerWidth(true) +width+10;
