@@ -539,7 +539,7 @@ body .aui_dialog {
 	-webkit-border-bottom-right-radius: 6px;
 	border-bottom-right-radius: 6px;
 }
-.explorer-topbar{ width: 100%; height: 25px; background: #f6f6f6; background-image: url(../images/bar.png);}
+.explorer-topbar{ width: 100%; height: 30px; background: #f6f6f6; background-image: url(../images/bar.png);}
 .explorer-main{ width: 100%; height: 100%; background: #fff;}
-.explorer-main-menu{ width: 150px; height: 100%; background: red; float: left}
+.explorer-main-menu{ width: 150px; height: 100%; background: #fff; float: left}
 .explorer-main-content{width: 80%;width:-moz-calc(100% - 150px);width:-webkit-calc(100% - 150px);width: calc(100% - 150px);height: 100%; float: left;overflow-y: auto;}
