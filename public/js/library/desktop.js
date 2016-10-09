@@ -1,4 +1,4 @@
-define("src/desktop", ["jquery","appsort","artDialog"], function(require) {
+define("library/desktop", ["jquery","appsort","artDialog"], function(require) {
 
 		// 程序排列
 		appsort.init();
@@ -17,7 +17,7 @@ define("src/desktop", ["jquery","appsort","artDialog"], function(require) {
 			var appObject = $(this);
 			// 加载动态调用的js
 			name = appObject.attr('name');
-			seajs.use("app/"+name,function() {
+			seajs.use("app/"+name+"/app",function() {
 				//动态调用方法、并传递参数
 				doCallback(eval(name),[appObject]);  
 			});

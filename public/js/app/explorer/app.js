@@ -1,7 +1,8 @@
 function explorer(appObject) {
-	// 页面模板
-	content = '<div class="explorer-topbar"></div><div class="explorer-main"><div class="explorer-main-menu"></div><div class="explorer-main-content"><div class="app-list"><div class="app-box middle" title=\'我的电脑\' name=\'explorer\'><span class="app-icon"><img src="images/apps/com.apple.imac-aluminum-24.png" alt="我的电脑" class="img-rounded"></span><span class="app-name">我的电脑</span><div class="clear"></div></div><div class="app-box middle" title=\'系统设置\' name=\'explorer\'><span class="app-icon"><img src="images/apps/ToolbarCustomizeIcon.png" alt="系统设置" class="img-rounded"></span><span class="app-name">系统设置</span><div class="clear"></div></div></div></div></div>';
 
+	// 页面模板
+	// var content = require("./explorer.html");
+	// alert(content);
 	// 打开对话框
 	$.dialog({
 		title: appObject.attr('title'),

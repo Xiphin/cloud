@@ -1,4 +1,4 @@
-define("src/context", [ "context", "jquery","appsort" ], function(require) {
+define("library/context", [ "context", "jquery","appsort" ], function(require) {
     // 右击menu菜单
     var $ = require("jquery");
 	context.init({preventDoubleContext: false});
