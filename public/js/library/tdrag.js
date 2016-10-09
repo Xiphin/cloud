@@ -1,4 +1,4 @@
-define("src/tdrag", [ "tdrag", "jquery" ], function(require) {
+define("library/tdrag", [ "tdrag", "jquery" ], function(require) {
   jQuery(function(){
     $(".app-box").Tdrag({
         scope:".app-list",

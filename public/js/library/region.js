@@ -1,4 +1,4 @@
-define("src/region", ["jquery"], function(require) {
+define("library/region", ["jquery"], function(require) {
 	(function($) {
 		$.fn.dom = function() { return this[0] ;}
 	})($) ;
