@@ -11,27 +11,35 @@ function explorer(appObject) {
 		minHeight: 200,				// 最小高度限制
 	});
 	
-	tpl = '<div class="explorer-topbar"></div>\
-				<div class="explorer-main">\
-				    <div class="explorer-main-menu"></div>\
-				    <div class="explorer-main-content">\
-				        <div class="app-list">\
-				            <div class="app-box middle" title="我的电脑" name="explorer">\
-				                <span class="app-icon">\
-				                    <img src="images/apps/com.apple.imac-aluminum-24.png" alt="我的电脑" class="img-rounded">\
-				                </span>\
-				                <span class="app-name">我的电脑</span>\
-				                <div class="clear"></div>\
-				            </div>\
-				            <div class="app-box middle" title="系统设置" name="explorer">\
-				                <span class="app-icon">\
-				                    <img src="images/apps/ToolbarCustomizeIcon.png" alt="系统设置" class="img-rounded">\
-				                </span>\
-				                <span class="app-name">系统设置</span>\
-				                <div class="clear"></div>\
-				            </div>\
-				        </div>\
-				   </div>\
+	tpl = '<div class="explorer-topbar">\
+				<div class="next-prev-box"></div>\
+				<div class="sortstyle-box"></div>\
+				<div class="config-button"></div>\
+				<div class="higher-button"></div>\
+				<div class="collection-button"></div>\
+				<div class="search-box"></div>\
+		   </div>\
+			<div class="explorer-main">\
+			    <div class="explorer-main-menu"></div>\
+			    <div class="explorer-main-content">\
+			        <div class="app-list">\
+			        {{message}}\
+			            <div class="app-box middle" title="我的电脑" v-on:click="openapp(\'explorer\')" name="explorer" path="c:/">\
+			                <span class="app-icon">\
+			                    <img src="images/apps/com.apple.imac-aluminum-24.png" alt="我的电脑" class="img-rounded">\
+			                </span>\
+			                <span class="app-name">我的电脑</span>\
+			                <div class="clear"></div>\
+			            </div>\
+			            <div class="app-box middle" title="系统设置" name="explorer">\
+			                <span class="app-icon">\
+			                    <img src="images/apps/ToolbarCustomizeIcon.png" alt="系统设置" class="img-rounded">\
+			                </span>\
+			                <span class="app-name">系统设置</span>\
+			                <div class="clear"></div>\
+			            </div>\
+			        </div>\
+			   </div>\
 			</div>'
 
 	// 渲染模板
@@ -40,34 +48,17 @@ function explorer(appObject) {
 		template:tpl,
 		data: {
 			message: 'Hello Vue.js!'
+		},
+		methods: {
+			openapp: function (msg) {
+			  this.message = this.name;
+			}
 		}
 	});
 
 	// 图标重排
 	explorerAppSort();
-	// 打开对应程序
-	explorerAppOpen();
 
-}
-
-// 打开对应程序
-function explorerAppOpen(argument) {
-	// 打开对应程序
-	$(".aui_state_focus .explorer-main-content .app-list .app-box").on("dblclick", function() {
-		var appObject = $(this);
-		// 加载动态调用的js
-		name = appObject.attr('name');
-		seajs.use("app/"+name,function() {
-			//动态调用方法、并传递参数
-			doCallback(eval(name),[appObject]);
-		});
-	});
-}
-
-// 定义执行回调函数方法
-function doCallback(fn,args)    
-{    
-	fn.apply(this, args);  
 }
 
 // 图标重排
