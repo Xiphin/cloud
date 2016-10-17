@@ -50,8 +50,8 @@ function explorer(appObject) {
 			openapp: function (msg) {
 				// 重新获取远程数据
 				this.items = [
-					{ name: 'explorer',title: '我的世界',icon: 'images/apps/com.apple.imac-aluminum-24.png' },
-					{ name: 'system',title: '我的生活',icon: 'images/apps/ToolbarCustomizeIcon.png' }
+					{ name: 'explorer',title: '我的世界',icon: 'images/apps/firefox.png' },
+					{ name: 'system',title: '我的生活',icon: 'images/apps/Finder.png' }
 					];
 				// 图标重排
 				setTimeout("explorerAppSort()", 1);
@@ -66,19 +66,19 @@ function explorer(appObject) {
 
 // 图标重排
 function explorerAppSort() {
-	appHeight = 0;
-	desktopHeight = $('.aui_state_focus').height()-50;
+	appWidth = 0;
+	desktopWidth = $('.aui_state_focus').width()-50;
 	width = 10;
 	height = 10;
 	$(".aui_state_focus .explorer-main-content .app-list .app-box").each(function(){
-		appHeight = appHeight+$(this).outerHeight(true);
-		if(appHeight>desktopHeight){
-			width = $(this).outerWidth(true) +width+10;
+		appWidth = appWidth+$(this).outerWidth(true);
+		if(appWidth>desktopWidth){
+			height = $(this).outerHeight(true) +height+10;
 			// 重置总高度和图标相对高度
-			appHeight = 0;
-			height = 10;
+			appWidth = 0;
+			width = 10;
 		}
 		$(this).animate({left:width+"px",top:height+'px'});
-		height = $(this).outerHeight(true) +height+10;
+		width = $(this).outerWidth(true) +width+10;
 	});
 }
