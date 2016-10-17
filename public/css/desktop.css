@@ -91,15 +91,20 @@ a:focus {
 	width: 80px;
 	height: 100px;
 }
-.explorer-main-content .middle img,.desktop .middle img {
+.desktop .middle img {
 	width: 60px;
 	margin-top: 5px;
 	margin-left: 10px;
 }
+.explorer-main-content .middle img{
+	width: 60px;
+	margin-top: 5px;
+	margin-left: 5px;
+}
 .explorer-main-content .middle app-icon,.desktop .middle .app-icon {
 	float: left;
 }
-.explorer-main-content .middle app-name,.desktop .middle .app-name {
+.app-name {
 	font-size: 12px;
 	float: left;
 	background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
