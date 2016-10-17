@@ -23,21 +23,15 @@ function explorer(appObject) {
 			    <div class="explorer-main-menu"></div>\
 			    <div class="explorer-main-content">\
 			        <div class="app-list">\
-			        {{message}}\
-			            <div class="app-box middle" title="我的电脑" v-on:click="openapp(\'explorer\')" name="explorer" path="c:/">\
+					  <template v-for="item in items">\
+			            <div class="app-box middle" title="{{item.title}}" @dblclick="openapp(item.name)" name="{{item.name}}">\
 			                <span class="app-icon">\
-			                    <img src="images/apps/com.apple.imac-aluminum-24.png" alt="我的电脑" class="img-rounded">\
+			                    <img src="{{item.icon}}" alt="{{item.title}}" class="img-rounded">\
 			                </span>\
-			                <span class="app-name">我的电脑</span>\
+			                <span class="app-name">{{item.title}}</span>\
 			                <div class="clear"></div>\
 			            </div>\
-			            <div class="app-box middle" title="系统设置" name="explorer">\
-			                <span class="app-icon">\
-			                    <img src="images/apps/ToolbarCustomizeIcon.png" alt="系统设置" class="img-rounded">\
-			                </span>\
-			                <span class="app-name">系统设置</span>\
-			                <div class="clear"></div>\
-			            </div>\
+					   </template>\
 			        </div>\
 			   </div>\
 			</div>'
@@ -47,11 +41,20 @@ function explorer(appObject) {
 		el: '#appcontent',
 		template:tpl,
 		data: {
-			message: 'Hello Vue.js!'
+			items: [
+			{ name: 'explorer',title: '我的电脑',icon: 'images/apps/com.apple.imac-aluminum-24.png' },
+			{ name: 'system',title: '系统设置',icon: 'images/apps/ToolbarCustomizeIcon.png' }
+			]
 		},
 		methods: {
 			openapp: function (msg) {
-			  this.message = this.name;
+				// 重新获取远程数据
+				this.items = [
+					{ name: 'explorer',title: '我的世界',icon: 'images/apps/com.apple.imac-aluminum-24.png' },
+					{ name: 'system',title: '我的生活',icon: 'images/apps/ToolbarCustomizeIcon.png' }
+					];
+				// 图标重排
+				setTimeout("explorerAppSort()", 1);
 			}
 		}
 	});
@@ -75,8 +78,7 @@ function explorerAppSort() {
 			appHeight = 0;
 			height = 10;
 		}
-		$(this).css('left',width+'px');
-		$(this).css('top',height+'px');
+		$(this).animate({left:width+"px",top:height+'px'});
 		height = $(this).outerHeight(true) +height+10;
 	});
 }
