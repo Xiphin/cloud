@@ -189,6 +189,7 @@ table.aui_border,table.aui_dialog {
 	display: block;
 	width: 100%;
 	height: 100%;
+	clear: both;
 	/*overflow :auto;*/
 }
 .aui_content.aui_state_full {
@@ -338,7 +339,7 @@ button.aui_state_highlight:active {
 .aui_title {
 	height: 27px;
 	line-height: 27px;
-	padding: 0 16px 0 0px;
+	/*padding: 0 16px 0 0px;*/
 	color: #cccccc;
 	/*font-weight: bold;*/
 	text-align: center;
@@ -363,7 +364,7 @@ button.aui_state_highlight:active {
 	background: #dddddd;
 	border-radius: 10px;
 }
-.aui_close:hover {
+.aui_close,.aui_close:hover {
 	background: #f5544d;
 	text-decoration: none;
 	border: 1px solid #bc1b14;
@@ -371,7 +372,7 @@ button.aui_state_highlight:active {
 	color: #fff;
 	box-shadow: 0 1px 0 rgba(255,255,255,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
 }
-.aui_max:hover {
+.aui_max,.aui_max:hover {
 	background: #f0d765;
 	text-decoration: none;
 	border: 1px solid #c0a630;
@@ -379,7 +380,7 @@ button.aui_state_highlight:active {
 	color: #fff;
 	box-shadow: 0 1px 0 rgba(255,255,255,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
 }
-.aui_min:hover {
+.aui_min,.aui_min:hover {
 	background: #97cd75;
 	text-decoration: none;
 	border: 1px solid #75a754;
@@ -404,19 +405,19 @@ button.aui_state_highlight:active {
 	top:4px;
 	right: 65px;
 	content: "\f068";
-	color: #dddddd;
+	color: #fff;
 }
 .aui_max {
 	top:4px;
 	right: 35px;
 	content: "\f065";
-	color: #dddddd;
+	color: #fff;
 }
 .aui_close {
 	top:4px;
 	right: 5px;
 	content: "\f00d";
-	color: #dddddd;
+	color: #fff;
 }
 .aui_min:before {
 	content: "\f068";
@@ -540,11 +541,11 @@ body .aui_dialog {
 	border-bottom-right-radius: 6px;
 }
 .explorer-topbar{ width: 100%; height: 30px; background: #f6f6f6; border-bottom: 1px solid #9a9a9a;}
-.explorer-topbar .next-prev-box{ float: left;background: url(../images/next_prev.png) no-repeat; width: 53px; height: 24px; margin-left: 5px;}
-.explorer-topbar .sortstyle-box{ float: left;background: url(../images/sortstyle.png) no-repeat; width: 58px; height: 24px; margin-left: 105px;}
-.explorer-topbar .config-button{ float: left;background: url(../images/config.png) no-repeat; width: 40px; height: 24px; margin-left: 10px;}
-.explorer-topbar .higher-button{ float: left;background: url(../images/higher.png) no-repeat; width: 40px; height: 24px; margin-left: 10px;}
-.explorer-topbar .collection-button{ float: left;background: url(../images/collection.png) no-repeat; width: 40px; height: 24px; margin-left: 10px;}
+.explorer-topbar .next-prev-box{ float: left;background: url(../images/next_prev.png) no-repeat; width: 53px; height: 24px; margin-left: 5px;cursor: pointer;}
+.explorer-topbar .sortstyle-box{ float: left;background: url(../images/sortstyle.png) no-repeat; width: 58px; height: 24px; margin-left: 105px;cursor: pointer;}
+.explorer-topbar .config-button{ float: left;background: url(../images/config.png) no-repeat; width: 40px; height: 24px; margin-left: 10px;cursor: pointer;}
+.explorer-topbar .higher-button{ float: left;background: url(../images/higher.png) no-repeat; width: 40px; height: 24px; margin-left: 10px;cursor: pointer;}
+.explorer-topbar .collection-button{ float: left;background: url(../images/collection.png) no-repeat; width: 40px; height: 24px; margin-left: 10px;cursor: pointer;}
 .explorer-topbar .search-box{ float: right;background: url(../images/search.png) no-repeat; width: 234px; height: 24px; margin-right: 5px;}
 .explorer-main{ width: 100%; height: 100%; background: #fff;}
 .explorer-main-menu{ width: 150px; height: 100%; background: #fff; float: left}
