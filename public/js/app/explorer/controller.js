@@ -10,7 +10,30 @@ function explorer(appObject) {
 		minWidth: 96,				// 最小宽度限制
 		minHeight: 200,				// 最小高度限制
 	});
-	
+
+	var setting = {
+		data: {
+			simpleData: {
+				enable: true
+			}
+		}
+	};
+
+	var zNodes =[
+		{ id:1, pId:0, name:"展开、折叠", open:true, iconOpen:"js/vendor/zTree/css/zTreeStyle/img/diy/1_open.png", iconClose:"js/vendor/zTree/css/zTreeStyle/img/diy/1_close.png"},
+		{ id:11, pId:1, name:"叶子节点1", icon:"js/vendor/zTree/css/zTreeStyle/img/diy/2.png"},
+		{ id:12, pId:1, name:"叶子节点2", icon:"js/vendor/zTree/css/zTreeStyle/img/diy/3.png"},
+		{ id:13, pId:1, name:"叶子节点3", icon:"js/vendor/zTree/css/zTreeStyle/img/diy/5.png"},
+		{ id:2, pId:0, name:"展开、折叠", open:true, icon:"js/vendor/zTree/css/zTreeStyle/img/diy/4.png"},
+		{ id:21, pId:2, name:"叶子节点1", icon:"js/vendor/zTree/css/zTreeStyle/img/diy/6.png"},
+		{ id:22, pId:2, name:"叶子节点2", icon:"js/vendor/zTree/css/zTreeStyle/img/diy/7.png"},
+		{ id:23, pId:2, name:"叶子节点3", icon:"js/vendor/zTree/css/zTreeStyle/img/diy/8.png"},
+		{ id:3, pId:0, name:"不使用自定", open:true },
+		{ id:31, pId:3, name:"叶子节点1"},
+		{ id:32, pId:3, name:"叶子节点2"},
+		{ id:33, pId:3, name:"叶子节点3"}
+	];
+
 	tpl = '<div class="explorer-topbar">\
 				<div class="next-prev-box"></div>\
 				<div class="sortstyle-box"></div>\
@@ -20,7 +43,9 @@ function explorer(appObject) {
 				<div class="search-box"></div>\
 		   </div>\
 			<div class="explorer-main">\
-			    <div class="explorer-main-menu"></div>\
+			    <div class="explorer-main-menu">\
+					<ul id="tree" class="ztree"></ul>\
+				</div>\
 			    <div class="explorer-main-content">\
 			        <div class="app-list">\
 					  <template v-for="item in items">\
@@ -34,8 +59,7 @@ function explorer(appObject) {
 					   </template>\
 			        </div>\
 			   </div>\
-			</div>'
-
+			</div>';
 	// 渲染模板
 	var appcontent = new Vue({
 		el: '#appcontent',
@@ -61,7 +85,8 @@ function explorer(appObject) {
 
 	// 图标重排
 	explorerAppSort();
-
+	$.fn.zTree.init($("#tree"), setting, zNodes);
+	$(".explorer-main-menu").mCustomScrollbar();
 }
 
 // 图标重排

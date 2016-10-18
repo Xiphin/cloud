@@ -9,8 +9,8 @@ seajs.config({
     "sidebar-classie": "vendor/sidebar/js/classie.js",
     "tdrag": "vendor/tdrag/tdrag.js",
     "appsort": "vendor/appsort/appsort.js",
-    "bootstrap-table": "vendor/bootstrapTable/bootstrap-table.min.js",
-    "bootstrap-editable": "vendor/bootstrapTable/editable/bootstrap-editable.js",
+    "ztree": "vendor/zTree/js/jquery.ztree.core.js",
+    "mCustomScrollbar": "vendor/scrollbar/jquery.mCustomScrollbar.concat.min.js",
     }
 });
 seajs.use("library/region");
