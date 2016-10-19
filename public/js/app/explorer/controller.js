@@ -86,7 +86,7 @@ function explorer(appObject) {
 	// 图标重排
 	explorerAppSort();
 	$.fn.zTree.init($("#tree"), setting, zNodes);
-	$(".explorer-main-menu").mCustomScrollbar();
+	$(".explorer-main-menu").niceScroll({cursorcolor:"#bebebe"});
 }
 
 // 图标重排

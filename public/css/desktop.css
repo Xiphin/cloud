@@ -553,6 +553,6 @@ body .aui_dialog {
 .explorer-topbar .collection-button{ float: left;background: url(../images/collection.png) no-repeat; width: 40px; height: 24px; margin-left: 10px;cursor: pointer;}
 .explorer-topbar .search-box{ float: right;background: url(../images/search.png) no-repeat; width: 234px; height: 24px; margin-right: 5px;}
 .explorer-main{ width: 100%; height: 100%; background: #fff;}
-.explorer-main-menu{ width: 150px; height: 100%; background: #fff; float: left}
+.explorer-main-menu{ width: 148px; height: 100%; background: #fff; float: left; border-right: 1px solid #dfdfdf;}
 .explorer-main-content{width: 80%;width:-moz-calc(100% - 150px);width:-webkit-calc(100% - 150px);width: calc(100% - 150px);height: 100%; float: left;overflow-y: auto;}
 ul.ztree {background: #f6f6f6;width:150px;height:100%;}
