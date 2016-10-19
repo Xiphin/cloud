@@ -66,8 +66,9 @@ function explorer(appObject) {
 		template:tpl,
 		data: {
 			items: [
-			{ name: 'explorer',title: '我的电脑',icon: 'images/apps/com.apple.imac-aluminum-24.png' },
-			{ name: 'system',title: '系统设置',icon: 'images/apps/ToolbarCustomizeIcon.png' }
+			{ name: 'explorer',title: '我的文件夹',icon: 'images/apps/GenericFolderIcon.png' },
+			{ name: 'system',title: '视频文件',icon: 'images/apps/GenericFolderIcon.png' },
+			{ name: 'system',title: '音频文件',icon: 'images/apps/GenericFolderIcon.png' }
 			]
 		},
 		methods: {
@@ -85,15 +86,17 @@ function explorer(appObject) {
 
 	// 图标重排
 	explorerAppSort();
+	// ztree
 	$.fn.zTree.init($("#tree"), setting, zNodes);
-	$(".explorer-main-menu").niceScroll({cursorcolor:"#bebebe"});
+	// scroll
+	$(".ztree").niceScroll({cursorcolor:"#bebebe"});
 }
 
 // 图标重排
 function explorerAppSort() {
 	appWidth = 0;
 	desktopWidth = $('.aui_state_focus').width()-50;
-	width = 10;
+	width = 30;
 	height = 10;
 	$(".aui_state_focus .explorer-main-content .app-list .app-box").each(function(){
 		appWidth = appWidth+$(this).outerWidth(true);
@@ -101,9 +104,30 @@ function explorerAppSort() {
 			height = $(this).outerHeight(true) +height+10;
 			// 重置总高度和图标相对高度
 			appWidth = 0;
-			width = 10;
+			width = 30;
 		}
 		$(this).animate({left:width+"px",top:height+'px'});
-		width = $(this).outerWidth(true) +width+10;
+		width = $(this).outerWidth(true) +width+30;
+	});
+	// 鼠标移动到图标效果
+	explorerAppHover();
+}
+
+// 鼠标移动到图标效果
+function explorerAppHover() {
+	$(".explorer-main-content .app-list .app-box").hover(function(){
+		$(this).addClass('hover');
+	},function(){
+		$(this).removeClass('hover');
+	});
+	$(".explorer-main-content .app-list .app-box").mousedown(function(){
+
+		$(".explorer-main-content .app-list .app-box").removeClass('active');
+		$(this).addClass('active');
+		// 阻止冒泡事件
+		return false;
+	});
+	$(".explorer-main-content").mousedown(function(){
+		$(".explorer-main-content .app-list .app-box").removeClass('active');
 	});
 }
