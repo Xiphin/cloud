@@ -9,7 +9,7 @@ seajs.config({
     "sidebar-classie": "vendor/sidebar/js/classie.js",
     "tdrag": "vendor/tdrag/tdrag.js",
     "appsort": "vendor/appsort/appsort.js",
-    "ztree": "vendor/zTree/js/jquery.ztree.core.js",
+    "ztree": "vendor/zTree/js/jquery.ztree.all.min.js",
     "nicescroll": "vendor/nicescroll/jquery.nicescroll.min.js",
     }
 });
