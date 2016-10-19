@@ -1,4 +1,4 @@
-define("library/desktop", ["jquery","appsort","artDialog","ztree","mCustomScrollbar"], function(require) {
+define("library/desktop", ["jquery","appsort","artDialog","ztree","nicescroll"], function(require) {
 
 		// 程序排列
 		appsort.init();

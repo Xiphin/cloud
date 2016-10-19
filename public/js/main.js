@@ -10,7 +10,7 @@ seajs.config({
     "tdrag": "vendor/tdrag/tdrag.js",
     "appsort": "vendor/appsort/appsort.js",
     "ztree": "vendor/zTree/js/jquery.ztree.core.js",
-    "mCustomScrollbar": "vendor/scrollbar/jquery.mCustomScrollbar.concat.min.js",
+    "nicescroll": "vendor/nicescroll/jquery.nicescroll.min.js",
     }
 });
 seajs.use("library/region");
