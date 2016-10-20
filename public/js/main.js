@@ -3,7 +3,7 @@ seajs.config({
     alias: {
     "jquery": "vendor/jquery/1.11.3/jquery.min.js",
     "bootstrap": "vendor/bootstrap/bootstrap.min.js",
-    "vue": "vendor/vue/1.0/vue.min.js",
+    "vue": "vendor/vue/2.0/vue.min.js",
     "jquery-ui": "vendor/jquery/1.11.3/jquery-ui.min.js",
     "artDialog": "vendor/artDialog/4.1.7/jquery.artDialog.source.js",
     "context": "vendor/context/js/context.js",
