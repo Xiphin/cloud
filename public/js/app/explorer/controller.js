@@ -80,14 +80,14 @@ function explorer(appObject) {
 					{ name: 'explorer',title: '我的世界',icon: 'images/apps/firefox.png' },
 					{ name: 'system',title: '我的生活',icon: 'images/apps/Finder.png' }
 					];
-				// 图标重排
-				setTimeout("explorerAppSort()", 1);
 			}
 		}
 	});
 
 	// 图标重排
 	explorerAppSort();
+	// 鼠标移动到图标效果
+	explorerAppHover();
 	// ztree
 	$.fn.zTree.init($("#tree"), setting, zNodes);
 	// scroll
@@ -111,8 +111,6 @@ function explorerAppSort() {
 		$(this).animate({left:width+"px",top:height+'px'});
 		width = $(this).outerWidth(true) +width+30;
 	});
-	// 鼠标移动到图标效果
-	explorerAppHover();
 }
 
 // 鼠标移动到图标效果
