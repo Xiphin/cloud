@@ -17,7 +17,7 @@ define("library/desktop", ["jquery","appsort","artDialog","ztree","nicescroll"],
 			var appObject = $(this);
 			// 加载动态调用的js
 			name = appObject.attr('name');
-			seajs.use("app/"+name+"/controller",function() {
+			seajs.use("app/"+name+"/controller/main",function() {
 				//动态调用方法、并传递参数
 				doCallback(eval(name),[appObject]);
 			});
@@ -38,7 +38,6 @@ define("library/desktop", ["jquery","appsort","artDialog","ztree","nicescroll"],
 			} else {
 				$.dialog.list[id].display(true);
 			}
-
 		})
 
 		// dock程序
@@ -63,3 +62,17 @@ define("library/desktop", ["jquery","appsort","artDialog","ztree","nicescroll"],
 		});
 
 })
+
+// 加载渲染模板
+function render(templatePath) {
+	var result;
+	$.ajax({
+		url: templatePath,
+		async: false,//改为同步方式
+		type: "GET",
+		success: function (html) {
+			result = html;
+		}
+	});
+	return result;
+}
