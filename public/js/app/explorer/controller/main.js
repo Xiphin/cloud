@@ -34,38 +34,10 @@ function explorer(appObject) {
 		{ id:33, pId:3, name:"叶子节点3"}
 	];
 
-	tpl = '<div class="explorer-container">\
-				<div class="explorer-topbar">\
-					<div class="next-prev-box"></div>\
-					<div class="sortstyle-box"></div>\
-					<div class="config-button"></div>\
-					<div class="higher-button"></div>\
-					<div class="collection-button"></div>\
-					<div class="search-box"></div>\
-				</div>\
-				<div class="explorer-main">\
-					<div class="explorer-main-menu">\
-						<ul id="tree" class="ztree"></ul>\
-					</div>\
-					<div class="explorer-main-content">\
-						<div class="app-list">\
-							<template v-for="item in items">\
-							<div class="app-box middle" :title="item.title" @dblclick="openapp(item.name)" :name="item.name">\
-								<span class="app-icon">\
-									<img :src="item.icon" :alt="item.title" class="img-rounded" />\
-								</span>\
-								<span class="app-name">{{item.title}}</span>\
-								<div class="clear"></div>\
-							</div>\
-							</template>\
-						</div>\
-					</div>\
-				</div>\
-			</div>';
 	// 渲染模板
 	var appcontent = new Vue({
 		el: '#appcontent',
-		template:tpl,
+		template:render('./js/app/explorer/view/index.html'),
 		data: {
 			items: [
 			{ name: 'explorer',title: '我的文件夹',icon: 'images/apps/GenericFolderIcon.png' },
